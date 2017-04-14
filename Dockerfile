@@ -13,3 +13,8 @@ RUN apt-get update && apt-get install -y \
 COPY pre-stop-hook.sh /pre-stop-hook.sh
 
 ADD elasticsearch.yml /usr/share/elasticsearch/config/elasticsearch.yml
+
+ADD ulimit-entrypoint.sh /
+
+ENTRYPOINT ["/ulimit-entrypoint.sh"]
+CMD ["/docker-entrypoint.sh"]
